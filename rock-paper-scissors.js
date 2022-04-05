@@ -1,5 +1,5 @@
+
 function computerPlay() {
-  // Randomly select for computer  
   let selector = Math.floor(Math.random()*3); // returns 0, 1, or 2
   if (selector == 0) {
     computerSelection = 'Rock';
@@ -9,34 +9,11 @@ function computerPlay() {
     computerSelection = 'Scissors';
   }
   console.log('Computer: ' + computerSelection); // remove when finished
-  return(computerSelection);
+  return computerSelection;
 };
 
 
-
-function playerSelection() {
-  // prompt user for a choice
-  let playerChoice = prompt("Please choose Rock, Paper, or Scissors");
-
-  // format user input to be capitalized
-  let formattedPlayerChoice = (playerChoice.charAt(0).toUpperCase() + 
-    playerChoice.slice(1).toLowerCase());
-
-  // if incorrect format, prompt user again
-  if (formattedPlayerChoice == 'Rock' || 
-    formattedPlayerChoice == 'Paper' || 
-    formattedPlayerChoice == 'Scissors') {
-    console.log('Player: ' + formattedPlayerChoice);
-    return(formattedPlayerChoice);
-  } else {
-    return(playerSelection());
-  }
-};
-
-
-
-function playRound(playerSelection, computerSelection) {
-  // Compare user input to computer input
+function compareSelections(playerSelection, computerSelection) {
   if (playerSelection == 'Rock') {
     if (computerSelection == 'Rock') {
       outcome = 'Tie';
@@ -64,55 +41,118 @@ function playRound(playerSelection, computerSelection) {
       outcome = 'Tie';
     }
   }
+  return outcome;
+};
 
-  // Display message showing results of match
-  if (outcome == 'Win') {
-    alert('You win! ' + playerSelection + ' beats ' + computerSelection + '.');
-  } else if (outcome == 'Lose') {
-    alert('Sorry, you lose! ' + computerSelection + ' beats ' + playerSelection + '.');  
-  } else if (outcome == 'Tie') {
-    alert('This match was a tie.');
+
+function playRound(playerSelection, computerSelection) {
+  // Compare choices and determine outcome
+  let outcome = compareSelections(playerSelection, computerSelection);
+
+  // Update the scoreboard
+  updateScore(playerSelection, computerSelection, outcome);
+
+  // Check if either score has reach 5 - if so, announce winner and end
+  if (playerWins == 5) {
+    resultText.textContent = ("Congrats! You were the first to 5 points!");
+    endGame();
+  } else if (computerWins == 5) {
+    resultText.textContent = ("Sorry, the computer reached 5 and wins this time!");
+    endGame();
   }
-
   // Return the outcome value for later use
-  return(outcome);
+  return outcome;
 };
 
 
-
-function game() {
-  // Start counters for the number of wins
-  let playerWins = 0;
-  let computerWins = 0;
+function updateScore(playerSelection, computerSelection, outcome) {
+  // Increase counter by 1 and update scoreboard
+  let playerCounter = document.getElementById('player-counter');
+  let computerCounter = document.getElementById('computer-counter');
   
-  // Start a counter for the number of games played
-  for (let rounds = 0; rounds < 5; rounds++) {
-    
-    // Play a round
-    let computerChoice = computerPlay();
-    let playerChoice = playerSelection();
-    playRound(playerChoice, computerChoice);    
-    
-    // Update player wins counter
-    if (outcome == 'Win') {
-      playerWins++;
-      console.log(playerWins); // delete when working
-    } else if (outcome == 'Lose') {
-      computerWins++;
-      console.log(computerWins); // delete when working
-    }
-  }
+  if (outcome == 'Win') {
+    playerWins++;
+    playerCounter.textContent = playerWins;
+    resultText.textContent = ('You win! ' + playerSelection + ' beats ' + computerSelection + '.');
+  } else if (outcome == 'Lose') {
+    computerWins++;
+    computerCounter.textContent = computerWins;
+    resultText.textContent = ('Sorry, you lose! ' + computerSelection + ' beats ' + playerSelection + '.');  
+  } else if (outcome == 'Tie') {
+    resultText.textContent = ('This match was a tie.');
+  };
+}
 
-  // Report results of five-round match
-  if (playerWins > computerWins) {
-    console.log("You win the set!");
-  } else if (playerWins < computerWins) {
-    console.log("Sorry, you lose this set!");
-  } else if (playerWins == computerWins) {
-    console.log("This set of matches was a tie.");
-  }
+
+function endGame() {
+  // Disable player selection buttons
+  document.getElementById('rock').disabled = true;
+  document.getElementById('paper').disabled = true;
+  document.getElementById('scissors').disabled = true;
+
+  // Create a button to reset counters and start a new game
+  const newGameBtn = document.createElement('button');
+  newGameBtn.id = 'new-game-button';
+  newGameBtn.innerHTML = 'New Game';
+  document.selection-buttons.appendChild(newGameBtn);
+
+  newGameBtn.addEventListener('click', () => {
+    newGameBtn.remove();
+    resetScoreboard();
+    startNewGame();
+  });
+};
+
+
+function resetScoreboard() {
+  let playerCounter = document.getElementById('player-counter');
+  playerWins = 0;
+  playerCounter.textContent = playerWins;
+  
+  let computerCounter = document.getElementById('computer-counter');
+  computerWins = 0;
+  computerCounter.textContent = computerWins;
+
+  let resultText = document.getElementById('match-result');
+  resultText.textContent = 'Match results';
+ };
+
+
+function startNewGame() {
+  document.getElementById('rock').disabled = false;
+  document.getElementById('paper').disabled = false;
+  document.getElementById('scissors').disabled = false;
+  
+  console.log('New game button clicked');
 };
 
 
 
-game();
+
+// State of the game upon starting
+let playerWins = 0;
+let computerWins = 0;
+let buttons = document.getElementById('selection-buttons');
+let resultText = document.getElementById('match-result');
+
+// Processes to run during a five-point match
+const rockBtn = document.getElementById('rock');
+rockBtn.addEventListener('click', () => {
+  console.log('Clicked rock');
+  let result = (playRound('Rock', computerPlay()));
+  console.log(result);
+});
+
+const paperBtn = document.getElementById('paper');
+paperBtn.addEventListener('click', () => {
+  console.log('Clicked paper');
+  let result = (playRound('Paper', computerPlay()));
+  console.log(result);
+});
+
+const scissorsBtn = document.getElementById('scissors');
+scissorsBtn.addEventListener('click', () => {
+  console.log('Clicked scissors');
+  let result = (playRound('Scissors', computerPlay()));
+  console.log(result);
+});
