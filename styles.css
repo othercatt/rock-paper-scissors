@@ -75,22 +75,61 @@ body {
   width: 150px;
 }
 
-.rock-icon,
-.paper-icon,
-.scissors-icon {
+.wand-icon,
+.bow-icon,
+.sword-icon {
   width: 100px;
   height: 100px;
   border-radius: 50%;
 }
 
-#rock {
-  margin-bottom: 32px;
+.wand-icon {
+  background: url(/images/wand-white.png);
+  background-size: contain;
+}
+.wand-icon:hover {
+  background: url(/images/wand-inv.png);
+  background-size: contain;
+}
+.wand-icon:active {
+  background: url(/images/wand-grey.png);
+  background-size: contain;
 }
 
-#rock,
-#paper,
-#scissors {
+.sword-icon {
+  background: url(/images/sword-white.png);
+  background-size: contain;
+}
+.sword-icon:hover {
+  background: url(/images/sword-inv.png);
+  background-size: contain;
+}
+.sword-icon:active {
+  background: url(/images/sword-grey.png);
+  background-size: contain;
+}
+
+.bow-icon {
+  background: url(/images/bow-white.png);
+  background-size: contain;
+}
+.bow-icon:hover {
+  background: url(/images/bow-inv.png);
+  background-size: contain;
+}
+.bow-icon:active {
+  background: url(/images/bow-grey.png);
+  background-size: contain;
+}
+
+#wand,
+#bow,
+#sword {
   padding: 0px;
+}
+
+#wand {
+  margin-bottom: 32px;
 }
 
 #new-game-button {

@@ -3,41 +3,41 @@
 function computerPlay() {
   let selector = Math.floor(Math.random()*3);
   if (selector == 0) {
-    computerSelection = 'Rock';
+    computerSelection = 'Wand';
   } else if (selector == 1) {
-    computerSelection = 'Paper';
+    computerSelection = 'Bow';
   } else if (selector == 2) {
-    computerSelection = 'Scissors';
+    computerSelection = 'Sword';
   }
   return computerSelection;
 };
 
 
 function compareSelections(playerSelection, computerSelection) {
-  if (playerSelection == 'Rock') {
-    if (computerSelection == 'Rock') {
+  if (playerSelection == 'Wand') {
+    if (computerSelection == 'Wand') {
       outcome = 'Tie';
-    } else if (computerSelection == 'Paper') {
+    } else if (computerSelection == 'Bow') {
       outcome = 'Lose';
-    } else if (computerSelection == 'Scissors') {
+    } else if (computerSelection == 'Sword') {
       outcome = 'Win';
     }
   }
-  else if (playerSelection == 'Paper') {
-    if (computerSelection == 'Rock') {
+  else if (playerSelection == 'Bow') {
+    if (computerSelection == 'Wand') {
       outcome = 'Win';
-    } else if (computerSelection == 'Paper') {
+    } else if (computerSelection == 'Bow') {
       outcome = 'Tie';
-    } else if (computerSelection == 'Scissors') {
+    } else if (computerSelection == 'Sword') {
       outcome = 'Lose';    
     }
   }
-  else if (playerSelection == 'Scissors') {
-    if (computerSelection == 'Rock') {
+  else if (playerSelection == 'Sword') {
+    if (computerSelection == 'Wand') {
       outcome = 'Lose';
-    } else if (computerSelection == 'Paper') {
+    } else if (computerSelection == 'Bow') {
       outcome = 'Win';
-    } else if (computerSelection == 'Scissors') {
+    } else if (computerSelection == 'Sword') {
       outcome = 'Tie';
     }
   }
@@ -80,9 +80,9 @@ function updateScore(playerSelection, computerSelection, outcome) {
 
 
 function endGame() {
-  document.getElementById('rock').disabled = true;
-  document.getElementById('paper').disabled = true;
-  document.getElementById('scissors').disabled = true;
+  document.getElementById('wand').disabled = true;
+  document.getElementById('bow').disabled = true;
+  document.getElementById('sword').disabled = true;
 
   const newGameBtn = document.createElement('button');
   newGameBtn.id = 'new-game-button';
@@ -112,9 +112,9 @@ function resetScoreboard() {
 
 
 function resetChoiceButtons() {
-  document.getElementById('rock').disabled = false;
-  document.getElementById('paper').disabled = false;
-  document.getElementById('scissors').disabled = false;
+  document.getElementById('wand').disabled = false;
+  document.getElementById('bow').disabled = false;
+  document.getElementById('sword').disabled = false;
 };
 
 
@@ -129,20 +129,23 @@ let buttons = document.getElementById('reset-box');
 let resultText = document.getElementById('match-result');
 
 // Player choice button event listeners - take choice and play one round
-const rockBtn = document.getElementById('rock');
+const rockBtn = document.getElementById('wand');
 rockBtn.addEventListener('click', () => {
-  console.log('Clicked rock');
-  let result = (playRound('Rock', computerPlay()));
+  console.log('Clicked wand');
+  let result = (playRound('Wand', computerPlay()));
 });
+// rockBtn.addEventListener("mouseover", bowOver, false);
+// rockBtn.addEventListener("mouseout", bowOut, false);
 
-const paperBtn = document.getElementById('paper');
+
+const paperBtn = document.getElementById('bow');
 paperBtn.addEventListener('click', () => {
-  console.log('Clicked paper');
-  let result = (playRound('Paper', computerPlay()));
+  console.log('Clicked bow');
+  let result = (playRound('Bow', computerPlay()));
 });
 
-const scissorsBtn = document.getElementById('scissors');
+const scissorsBtn = document.getElementById('sword');
 scissorsBtn.addEventListener('click', () => {
-  console.log('Clicked scissors');
-  let result = (playRound('Scissors', computerPlay()));
+  console.log('Clicked sword');
+  let result = (playRound('Sword', computerPlay()));
 });
