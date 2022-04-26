@@ -4,27 +4,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+  <title>Rock, Paper, Scissors | OtherCatt Inc.</title>
 </head>
 <body>
-
-  <div id='scoreboard'>
-    <h1 id='title'>Scoreboard</h1>
-    <div id='counter'>
+  
+  <div id='scoreboard'> 
+    <h1 class='title'>Scoreboard Title</h1>
+    <div class='counter'>
       <span id='player-counter'>0</span>
       <span> - </span>
       <span id='computer-counter'>0</span>
+    </div>
     <p id='match-result'>Match results</p>
-    </div>
-
-    <div id='selection-buttons'>
-      <button id='rock'>Rock</button>
-      <button id='paper'>Paper</button>
-      <button id='scissors'>Scissors</button>
-    </div>
-    
   </div>
+  
+  <div id="choice-container">
+    <div id="top-row">
+      <img class='arrow arrow-top-left' src='/images/arrow-top-left.png'>
+      <button id='rock'><img class='rock-icon' src='/images/bow.png'></button>
+      <img class="arrow arrow-top-right" src="/images/arrow-top-right.png">
+    </div>
+    <div id="bottom-row">
+      <button id='paper'><img class='paper-icon' src='/images/wand.png'></button>
+      <img class='arrow arrow-bottom' src='/images/arrow-bottom.png'>
+      <button id='scissors'><img class='scissors-icon' src='/images/sword.png'></button>
+    </div>
+  </div>  
 
+  <div id="reset-box">
+  </div>
 
   <script src='rock-paper-scissors.js'></script>
 </body>

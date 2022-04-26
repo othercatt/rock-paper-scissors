@@ -87,7 +87,7 @@ function endGame() {
   const newGameBtn = document.createElement('button');
   newGameBtn.id = 'new-game-button';
   newGameBtn.innerHTML = 'New Game';
-  document.selection-buttons.appendChild(newGameBtn);
+  buttons.appendChild(newGameBtn);
 
   newGameBtn.addEventListener('click', () => {
     newGameBtn.remove();
@@ -125,7 +125,7 @@ function resetChoiceButtons() {
 // State of the game upon starting
 let playerWins = 0;
 let computerWins = 0;
-let buttons = document.getElementById('selection-buttons');
+let buttons = document.getElementById('reset-box');
 let resultText = document.getElementById('match-result');
 
 // Player choice button event listeners - take choice and play one round
