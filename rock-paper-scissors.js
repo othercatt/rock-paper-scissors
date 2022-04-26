@@ -130,21 +130,25 @@ let resultText = document.getElementById('match-result');
 
 // Player choice button event listeners - take choice and play one round
 const rockBtn = document.getElementById('wand');
+// rockBtn.addEventListener("mouseover", wandOver, false);
+// rockBtn.addEventListener("mouseout", wandOut, false);
 rockBtn.addEventListener('click', () => {
   console.log('Clicked wand');
   let result = (playRound('Wand', computerPlay()));
 });
-// rockBtn.addEventListener("mouseover", bowOver, false);
-// rockBtn.addEventListener("mouseout", bowOut, false);
 
 
 const paperBtn = document.getElementById('bow');
+// rockBtn.addEventListener("mouseover", wandOver, false);
+// rockBtn.addEventListener("mouseout", wandOut, false);
 paperBtn.addEventListener('click', () => {
   console.log('Clicked bow');
   let result = (playRound('Bow', computerPlay()));
 });
 
 const scissorsBtn = document.getElementById('sword');
+// rockBtn.addEventListener("mouseover", wandOver, false);
+// rockBtn.addEventListener("mouseout", wandOut, false);
 scissorsBtn.addEventListener('click', () => {
   console.log('Clicked sword');
   let result = (playRound('Sword', computerPlay()));
