@@ -11,29 +11,47 @@ body {
 #scoreboard {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Diplomata SC', cursive;
 }
 
 .title {
-  border: 1px solid black;
-  padding: 16px;
   background-color: lightgoldenrodyellow;
+  border: 15px ridge tan;
+  border-radius: 20% 0;
+  padding: 20px;
+  margin: 32px;
+  font-size: 28px;
 }
 
 .counter {
-  border: 1px solid black;
-  padding: 8px;
+  background-color: white;
+  border: 10px ridge goldenrod;
+  border-radius: 20% 0;
+  padding: 18px;
+}
+
+#match-result {
+  color: lightgoldenrodyellow;
+  text-shadow: black 2px 2px;
+  height: 60px;
+  width: 375px;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 
 #choice-container {
-  background-color: darkslategrey;
-  border: 14px solid goldenrod;
+  background-color: rgb(21, 21, 126);
   box-shadow: 6px 6px 12px grey;
+  border: 14px double goldenrod;
+  border-radius: 30%;
   width: 400px;
   height: 400px;
-  border-radius: 30%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,8 +89,8 @@ body {
 }
 
 .arrow-bottom {
-  padding-top: 40px;
-  width: 150px;
+  padding-top: 50px;
+  width: 130px;
 }
 
 .wand-icon,
@@ -133,8 +151,11 @@ body {
 }
 
 #new-game-button {
-  color: red;
-  margin: 12px;
-  border: 1px black solid;
+  background-color: wheat;
+  color: black;
+  margin: 24px;
+  padding: 24px;
+  border: 5px goldenrod groove;
+  border-radius: 20% 0%;
   align-self: center;
 }

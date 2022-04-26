@@ -48,15 +48,14 @@ function compareSelections(playerSelection, computerSelection) {
 function playRound(playerSelection, computerSelection) {
   let outcome = compareSelections(playerSelection, computerSelection);
   updateScore(playerSelection, computerSelection, outcome);
-
+  
   if (playerWins == 5) {
     resultText.textContent = ("Congrats! You were the first to 5 points!");
     endGame();
   } else if (computerWins == 5) {
-    resultText.textContent = ("Sorry, the computer reached 5 and wins this time!");
+    resultText.textContent = ("Sorry, the computer wins this time!");
     endGame();
   }
-  
   return outcome;
 };
 
@@ -107,7 +106,7 @@ function resetScoreboard() {
   computerCounter.textContent = computerWins;
 
   let resultText = document.getElementById('match-result');
-  resultText.textContent = 'Match results';
+  resultText.textContent = 'Choose your weapon!';
  };
 
 
@@ -130,8 +129,6 @@ let resultText = document.getElementById('match-result');
 
 // Player choice button event listeners - take choice and play one round
 const rockBtn = document.getElementById('wand');
-// rockBtn.addEventListener("mouseover", wandOver, false);
-// rockBtn.addEventListener("mouseout", wandOut, false);
 rockBtn.addEventListener('click', () => {
   console.log('Clicked wand');
   let result = (playRound('Wand', computerPlay()));
@@ -139,16 +136,12 @@ rockBtn.addEventListener('click', () => {
 
 
 const paperBtn = document.getElementById('bow');
-// rockBtn.addEventListener("mouseover", wandOver, false);
-// rockBtn.addEventListener("mouseout", wandOut, false);
 paperBtn.addEventListener('click', () => {
   console.log('Clicked bow');
   let result = (playRound('Bow', computerPlay()));
 });
 
 const scissorsBtn = document.getElementById('sword');
-// rockBtn.addEventListener("mouseover", wandOver, false);
-// rockBtn.addEventListener("mouseout", wandOut, false);
 scissorsBtn.addEventListener('click', () => {
   console.log('Clicked sword');
   let result = (playRound('Sword', computerPlay()));
